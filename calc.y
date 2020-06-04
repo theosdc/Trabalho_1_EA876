@@ -6,6 +6,8 @@
   Com o fim de facilitar a compreencao do codigo em assembly, decidimos imprimir
   comentarios que mostram quais operacoes estao sendo resolvidas , o resultado
   final também é impresso.
+  O formato seguido pelas operações eh POP B; POP A; OPERACAO; PUSH A;
+  de modo a implementar a pilha do algoritmo Shift Reduce.
 *                                                                             */
 /* Definicoes-----------------------------------------------------------------*/
 
@@ -89,7 +91,12 @@ EXPRESSAO:
     if ( $3 == 0 ) { /* Expoente igual a zero */
       printf("POP B\nPOP A\nMOV A, 1\nPUSH A\n");
     } else {
-      /*Expoente diferente de zero*/
+
+      if ($3 == 1){ /* Expoente igual a um */
+      printf("POP B\nPOP A\nPUSH A\n");
+      } else{
+
+      /*Expoente diferente de zero e um*/
       printf("POP B\nPOP A\nMOV C,A\nDEC B\nCall potencia\nPUSH A\n");
 
       /* Foi criada uma subrotina "potencia" para realizar a exponencicao.
@@ -100,7 +107,7 @@ EXPRESSAO:
      }
      $$ = res;
      printf(";\n");
-    }
+    }}
 
   | EXPRESSAO DIV EXPRESSAO  { /* Tratamento de Divisao */
     printf("\n;Operacao: %d / %d = %d\n", $1, $3, $1/$3);
