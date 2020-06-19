@@ -90,10 +90,12 @@ EXPRESSAO:
     /* Casos para a potenciao */
     if ( $3 == 0 ) { /* Expoente igual a zero */
       printf("POP B\nPOP A\nMOV A, 1\nPUSH A\n");
+      $$ = 1;
     } else {
 
       if ($3 == 1){ /* Expoente igual a um */
       printf("POP B\nPOP A\nPUSH A\n");
+      $$ = $1;
       } else{
 
       /*Expoente diferente de zero e um*/
@@ -104,9 +106,10 @@ EXPRESSAO:
       do programa */
 
       pot_enable = 1; /* Indica que a subrotina deve ser impressa */
-     }
-     $$ = res;
-     printf(";\n");
+      $$ = res;
+
+      }
+      printf(";\n");
     }}
 
   | EXPRESSAO DIV EXPRESSAO  { /* Tratamento de Divisao */
