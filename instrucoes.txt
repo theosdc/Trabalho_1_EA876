@@ -10,7 +10,7 @@
 Passo 0: Abrir um terminal de comandos num sistema linux e acessar o diretorio
          do programa.
 
-Passo 1: Verificar se todos se o diretorio contem os arquivos necessarios para
+Passo 1: Verificar se o diretorio contem os arquivos necessarios para
          a compilacao. Esses sao:
 
 	- "Makefile"
